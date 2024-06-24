@@ -1,49 +1,30 @@
-def add(x, y):
-    return x + y
 
-def subtract(x, y):
-    return x - y
+        import java.util.Random;
+import java.util.Scanner;
 
-def multiply(x, y):
-    return x * y
-def divide(x, y):
-    return x / y
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Random rand = new Random();
+        int numberToGuess = rand.nextInt(100) + 1;
+        Scanner scanner = new Scanner(System.in);
+        int guess;
 
+        System.out.println("Welcome to the number guessing game!");
+        System.out.println("Guess a number between 1 and 100:");
 
-print("Select operation.")
-print("1.Add")
-print("2.Subtract")
-print("3.Multiply")
-print("4.Divide")
+        while (true) {
+            guess = scanner.nextInt();
 
-while True:
-    choice = input("Enter choice(1/2/3/4): ")
+            if (guess == numberToGuess) {
+                System.out.println("Congratulations, you guessed the number!");
+                break;
+            } else if (guess < numberToGuess) {
+                System.out.println("Your guess is too low. Try again:");
+            } else {
+                System.out.println("Your guess is too high. Try again:");
+            }
+        }
 
-    # check if choice is one of the four options
-    if choice in ('1', '2', '3', '4'):
-        try:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-            continue
-
-        if choice == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
-
-        elif choice == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
-
-        elif choice == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
-
-        elif choice == '4':
-            print(num1, "/", num2, "=", divide(num1, num2))
-        
-        # check if user wants another calculation
-        # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
-          break
-    else:
-        print("Invalid Input"
+        scanner.close();
+    }
+}
